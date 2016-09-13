@@ -1,0 +1,7 @@
+annotate <-
+function(searchtable) {
+    require (plyr)
+    require (dplyr)
+    annotation <- inner_join(searchtable, maintable, by = "accession")
+    annotation
+}
