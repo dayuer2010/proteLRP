@@ -1,0 +1,30 @@
+GOCC <-
+function(maintable) {
+   
+    intracellular <-subset(maintable,grepl("intracellular",GOCC))
+    
+    cytoplasm <-subset(maintable,grepl("cytoplasm",GOCC))
+    
+    nucleus <-subset(maintable,grepl("nucleus",GOCC))
+    
+    extracellular <-subset(maintable,grepl("extracellular",GOCC))
+    
+    
+    
+    membrane <-subset(maintable,grepl("membrane",GOCC))
+    
+    
+    plasmaMembrane <-subset(maintable,grepl("plasma membrane",GOCC))
+    
+    
+    exosome <-subset(maintable,grepl("exosome",GOCC))
+    
+    
+    GO <- rbind(intracellular=nrow(intracellular), cytoplasm=nrow(cytoplasm), nucleus=nrow(nucleus),extracellular= nrow (extracellular), membrane=nrow(membrane), plasmaMembrane=nrow(plasmaMembrane), exosome=nrow(exosome))
+    GO<-as.data.frame(GO)
+    pdf("GO.pdf")
+    p1<-ggplot(GO,aes(x=rownames(GO),y=GO,fill=rownames(GO)))+geom_bar(stat="identity")+xlab("")+ylab("Numbers")+labs(fill="GO")
+    print(p1)
+    dev.off()
+    
+}
