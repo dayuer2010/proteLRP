@@ -1,0 +1,9 @@
+glycoProteins_Uniprot <-
+function(maintable) {
+   
+    glycoUniprot <-subset(maintable,grepl("Y",glycosylation)|grepl("Glycoprotein;",keywords))
+    
+    glycoUniprot<- glycoUniprot[,c("accession","proteinID",  "interacts", "glycosylation", "ligandReceptorNC")]
+    glycoUniprot
+    write.xlsx(glycoUniprot,"glycoUniprot.xlsx")
+}
