@@ -1,0 +1,16 @@
+glycoProteins_Sequence <-
+function(PNGasePep) {
+    require(sqldf)
+    require(RH2)
+    
+    
+    glycoSequence <-subset(PNGasePep,grepl("n_T",sequence)|grepl("n_C",sequence)|grepl("n_S",sequence))
+    
+    
+    glycofilter <-unique(subset(PNGasePep,grepl("nPS",sequence)|grepl("nPT",sequence)|grepl("nPC",sequence)))
+    
+    glycoproteinsSeq <- setdiff(glycoSequence,glycofilter)
+    df<-unique(glycoproteinsSeq$accession)
+    write.xlsx(df,"glycoProteins_Sequence.xlsx")
+    
+}
