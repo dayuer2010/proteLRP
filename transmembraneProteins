@@ -1,0 +1,9 @@
+transmembraneProteins <-
+function(maintable) {
+  
+    
+    transmembrane <-subset(maintable,grepl("TMH", TMhelixTMHMM)|grepl("Phobius",TMhelixphobius)|grepl(" TMUniprot","Y")|grepl("Transmembrane;",keywords))
+    transmembrane <- transmembrane[,c("accession","proteinID",  "interacts", "GOCC", "glycosylation", "ligandReceptorNC")]
+    transmembrane
+    write.xlsx(transmembrane,"transmembrane.xlsx")
+}
