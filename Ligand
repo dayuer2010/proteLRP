@@ -1,0 +1,9 @@
+Ligand <-
+function(maintable) {
+    
+   
+    
+    ligand <-unique(subset(maintable,grepl("ligand",ligandReceptorNC)))
+    ligand[,"accession"]
+    write.xlsx( ligand[,"accession"]," ligand.xlsx")
+}
