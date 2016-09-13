@@ -1,0 +1,17 @@
+ligandReceptor <-
+function(maintable) {
+    require(sqldf)
+  
+    
+    receptor <- unique(subset(maintable,grepl("receptor",ligandReceptorNC)))
+    
+
+    ligand<-unique(subset(maintable,grepl("ligand",ligandReceptorNC)))
+    
+    type <- rbind(receptor=nrow (receptor), ligand=nrow(ligand))
+    type<-as.data.frame(type)
+    pdf("ligand-recepor.pdf")
+    p1<-ggplot(type,aes(x=rownames(type),y=type,fill=rownames(type)))+geom_bar(stat="identity")+xlab("")+ylab("Numbers")+labs(fill="ligand-receptor")
+    print(p1)
+    dev.off()
+}
