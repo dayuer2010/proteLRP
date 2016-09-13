@@ -1,0 +1,7 @@
+Receptor <-
+function(maintable) {
+    
+    receptor <-unique(subset(maintable,grepl("receptor",ligandReceptorNC)))
+    receptor[,"accession"]
+    write.xlsx(receptor[,"accession"],"receptor.xlsx")
+}
